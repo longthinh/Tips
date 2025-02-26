@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>𝔏𝔬𝔫𝔤 𝔗𝔥𝔦𝔫𝔥 | 🌱 𝙻𝚞𝚡𝚢𝚍𝚎𝚟</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="dark-mode">
+    <button class="toggle-button" onclick="toggleDarkMode()">☀️</button>
+
+    <h1><center>Hướng dẫn hạ cấp ứng dụng iOS</center></h1>
+    <br />
+    <p><center>--------------------------------</center></p>
+    <br />
+    <h3>Điều kiện bắt buộc</h3>
+    <ul>
+      <li>Ứng dụng phải còn tồn tại trên App Store</li>
+      <li>Đã tải ứng dụng về Apple ID để có Lisence</li>
+      <li>Phải có appVerId (sẽ hướng dẫn ở Bước 03)</li>
+      <li>Sử dụng trên Windows</li>
+    </ul>
+
+    <h4>Bước 1. Cài đặt và sử dụng Fiddler Classic</h4>
+    <ul>
+      <li>
+        Tải về
+        <a href="https://www.telerik.com/download/fiddler">Fiddler Classic</a>
+      </li>
+      <li>
+        Tải về
+        <a
+          href="https://secure-appldnld.apple.com/itunes12/091-87819-20180912-69177170-B085-11E8-B6AB-C1D03409AD2A6/iTunes64Setup.exe"
+          >iTunes 12.6.5.3</a
+        >
+        đây là bản cuối cùng hỗ trợ tải tệp ứng dụng
+      </li>
+      <li>Công cụ giải nén WinRAR</li>
+      <li>
+        Sau khi tải về Fiddler Classic và iTunes thì bấm cài đặt: Next > Next >
+        cho đến khi cài đặt hoàn tất
+      </li>
+    </ul>
+
+    <h4>Bước 2. Cài đặt chứng chỉ cho Fiddler Classic</h4>
+    <ul>
+      <li>
+        Mở Fiddler Classic và Nhấn "No" nếu có hỏi cập nhật và làm theo như ảnh
+        <br />
+        <img src="image/img1.png" alt="Bước 2" />
+      </li>
+      <br />
+      <li>
+        Chọn Tools > Options.. > chọn thẻ HTTPS<br />
+        <img src="image/img1.png" alt="Bước 2" />
+      </li>
+      <br />
+      <li>
+        Nhấp chọn Decrypt HTTPS traffic > Chọn "No" nếu có hộp thoại hiện lên và
+        nhấp chọn Actions > Export Root Certificate to Desktop<br />
+        <img src="image/img1.png" alt="Bước 2" />
+      </li>
+      <br />
+      <li>
+        Nhấp vào FiddlerRoot.cer trên Desktop để cài đặt và làm theo như hình và
+        chọn Install Certificate...<br />
+        <img src="image/img1.png" alt="Bước 2" /><br />
+        <img src="image/img1.png" alt="Bước 2" /><br />
+        <img src="image/img1.png" alt="Bước 2" />
+      </li>
+      <br />
+      <li>
+        Chọn Trusted Root Certification Authorities và nhấn OK > Finish > Xong
+        phần cài đặt Fiddler Classic và Certificate<br />
+        <img src="image/img1.png" alt="Bước 2" />
+      </li>
+    </ul>
+
+    <h4>Bước 3. Lấy appVerId tương ứng với phiên bản của ứng dụng</h4>
+    <ul>
+      <li>Nếu đã có trước appVerId thì sang luôn Bước 4</li>
+      <li>Mở iTunes > Đăng nhập > Purchased > nhấp tải ứng dụng cần hạ cấp</li>
+      <li>
+        Ném tệp ipa của ứng dụng ra thư mục bất kỳ ngoài Desktop để giải nén
+      </li>
+      <li>Đổi định dạng .ipa thành .zip rồi giải nén</li>
+      <li>
+        Tìm và mở tệp iTunesMetadata.plist bằng Notepad hoặc bất cứ thứ gì có hỗ
+        trợ
+      </li>
+      <li>
+        Tìm đến đoạn mã như trong ảnh (phiên bản mới nhất là phiên bản nằm phía
+        dưới)<br />
+        <img src="image/img1.png" alt="Bước 3" />
+      </li>
+      <br />
+      <li>
+        Động não và tư duy tính toán để đối chiếu phiên bản đó tương ứng với
+        appVerId nào trong mảng trong hình và sao chép dãy số nguyên đó
+      </li>
+    </ul>
+
+    <h4>Bước 4. Tải phiên bản cũ</h4>
+    <ul>
+      <li>
+        Sau khi đã có được appVerId thì có thể dùng
+        <a href="https://ipadown.thuthuatjb.com/">IPADOWN</a> và làm theo hướng
+        dẫn trên Website để tải hoặc tiếp tục dùng Fiddler Classic để tải
+      </li>
+      <li>
+        Mở Fiddler Classic lên nhập <code>bpu MZBuy</code> vào Textbox phía dưới
+        và Enter để cản Request đi thẳng đến Server trước khi ta nhập vào
+        appVerId<br />
+        <img src="image/img1.png" alt="Bước 4" />
+      </li>
+      <br />
+      <li>
+        Mở iTunes và tìm đến ứng dụng cần hạ cấp và nhấp tải và nhìn sang
+        Fiddler Classic nhấp đúp vào biểu tượng màu đỏ p23-buy.itunes.app..<br />
+        <img src="image/img1.png" alt="Bước 4" />
+      </li>
+      <br />
+      <li>
+        Chọn TextView > dán appVerId vào > Run to Completion > iTunes sẽ tự tải
+        phiên bản ứng dụng tương ứng với appVerId đã dán vào
+      </li>
+      <li>
+        Sao lưu lại tệp ipa đó ở một nơi an toàn hoặc dùng 3uTools để cài luôn
+        vào thiết bị
+      </li>
+    </ul>
+
+    <h3>Lưu ý</h3>
+    <ul>
+      <li>Tệp ipa tải về là chính chủ theo Apple ID có hiệu lực vĩnh viễn</li>
+      <li>
+        Đối với tệp ipa không có In-app có thể cài trực tiếp thông qua
+        itms-services
+      </li>
+      <li>
+        Đối với tệp ipa có In-app bắt buộc phải dùng 3uTools hoặc iMazing để cài
+        thông qua PC để không bị lỗi load In-app
+      </li>
+    </ul>
+
+    <h3>Author</h3>
+    <p>
+      <a href="https://github.com/longthinh">𝔏𝔬𝔫𝔤 𝔗𝔥𝔦𝔫𝔥</a> |
+      <a href="https://github.com/longthinh">𝙻𝚞𝚡𝚢𝚍𝚎𝚟</a>
+    </p>
+
+    <script src="js/style.js"></script>
+  </body>
+</html>
